@@ -1,0 +1,102 @@
+.fighters-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid; /* class selector outranks element selector */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+/* Base card styles — outrank global `li` rules */
+.fighter-card {
+  background: var(--panel, #1f2225);
+  border: 2px solid var(--border, whitesmoke);
+  border-radius: 12px;
+  padding: 14px;
+  color: var(--text, #e7e7e7);
+  text-align: left;
+  box-sizing: border-box;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+/* Hover/Focus */
+.fighter-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,0,0,.35);
+}
+.fighter-card:focus-within {
+  outline: 2px solid transparent;
+  border-color: var(--accent, #0b84ff);
+  box-shadow: 0 0 0 3px rgba(11,132,255,.25);
+}
+
+/* IMAGE */
+.fighter-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;      
+  object-fit: contain;
+  border-radius: 8px;
+  background: #2b2f33;
+  margin-bottom: 12px;
+}
+
+/* TEXT */
+.fighter-card h4 {
+  margin: 4px 0 6px;
+  font-size: 1rem;
+  font-weight: 800;
+}
+.fighter-card p {
+  margin: 4px 0;
+  font-size: .93rem;
+}
+
+/* BUTTON */
+.fighter-card button {
+  margin-top: 12px;
+  align-self: flex-start;
+  background: #111315;
+  color: var(--text, #e7e7e7);
+  border: 1px solid var(--border, whitesmoke);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background .15s ease, opacity .15s ease, transform .08s ease, box-shadow .15s ease;
+}
+.fighter-card button:hover { background: #0b0d0e; }
+.fighter-card button:active { transform: translateY(1px); }
+.fighter-card button:disabled { opacity: .55; cursor: not-allowed; }
+.fighter-card button:focus-visible {
+  outline: 2px solid var(--accent, #0b84ff);
+  outline-offset: 2px;
+}
+
+
+.fighter-card {
+  display: inline-block;    
+  width: 240px;           
+  margin: 8px;               
+  vertical-align: top;
+}
+
+.fighters-list .fighter-card {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .fighters-list { gap: 14px; }
+  .fighter-card  { width: 220px; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .fighter-card,
+  .fighter-card button {
+    transition: none;
+  }
+}
